@@ -12,8 +12,8 @@ module Myhub
     # Your code here ...
     get "/" do
       api = Github.new
-      # get stuff from github
-      erb :index, locals: { issues: stuff }
+      data = api.get_issues("TIY-ATL-ROR-2015-Sep","assignments", { assignee: "violetaria", state: "all" })
+      erb :index, locals: { issues: data }
     end
 
     post "/issue/reopen/:id" do
