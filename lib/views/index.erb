@@ -15,8 +15,12 @@
         %>
         <form action="/issue/<%= action %>/<%= issue[:id] %>" method="post">
         <li>
-          <a href="<%= issue[:url] %>"><%= issue[:id] %> - <%= issue[:title] %></a>
-          <input type="Submit" value="<%= action %>">
+          <p>
+            Issue #<%= issue[:id] %>: <a href="<%= issue[:url] %>"><%= issue[:title] %></a>
+          </p>
+          <p>
+            Status: <%= issue[:state].capitalize %> <input type="Submit" class="<%= action %>" value="<%= action.capitalize %>">
+          </p>
         </li>
         </form>
     <% end %>
