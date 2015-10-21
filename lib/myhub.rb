@@ -18,13 +18,13 @@ module Myhub
 
     post "/issue/reopen/:id" do
       api = Github.new
-      api.reopen_issue(params["id"].to_i)
+      api.reopen_issue("TIY-ATL-ROR-2015-Sep","assignments",params["id"].to_i)
       "Cool cool cool"
     end
 
     post "/issue/close/:id" do
       api = Github.new
-      api.close_issue(params["id"].to_i)
+      api.close_issue("TIY-ATL-ROR-2015-Sep","assignments",params["id"].to_i)
       "Cool cool cool"
     end
 

@@ -7,8 +7,19 @@
   <h2>All the issues!</h2>
   <ul>
     <% issues.each do |issue|%>
-    <li><%= issue %></li>
-        <% end %>
+        <% if issue[:state] == "closed"
+             action = "reopen"
+           else
+             action = "close"
+           end
+        %>
+        <form action="/issue/<%= action %>/<%= issue[:id] %>" method="post">
+        <li>
+          <a href="<%= issue[:url] %>"><%= issue[:id] %> - <%= issue[:title] %></a>
+          <input type="Submit" value="<%= action %>">
+        </li>
+        </form>
+    <% end %>
   </ul>
 
 </body>
