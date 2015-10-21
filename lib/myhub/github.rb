@@ -14,7 +14,7 @@ module Myhub
       response = self.class.get("/repos/#{owner}/#{repo}/issues",
                                 headers: @headers,
                                 query: options)
-      response.map {|issue| {id: issue["id"], title: issue["title"], url: issue["html_url"], state: issue["state"]} }
+      response.map {|issue| {id: issue["number"], title: issue["title"], url: issue["html_url"], state: issue["state"]} }
     end
 
     def close_issue(owner,repo,id)
