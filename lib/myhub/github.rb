@@ -14,7 +14,7 @@ module Myhub
       response = self.class.get("/repos/#{owner}/#{repo}/issues",
                                 headers: @headers,
                                 query: options)
-      response.map {|issue| {id: issue["id"], title: issue["title"], url: issue["url"], state: issue["state"]} }
+      response.map {|issue| {id: issue["id"], title: issue["title"], url: issue["html_url"], state: issue["state"]} }
     end
 
     def close_issue(owner,repo,id)
@@ -23,7 +23,7 @@ module Myhub
                        :body => {state: "closed"}.to_json)
     end
 
-    def open_issue(owner,repo,id)
+    def reopen_issue(owner,repo,id)
       self.class.patch("/repos/#{owner}/#{repo}/issues/#{id}",
                        :headers => @headers,
                        :body => {state: "open"}.to_json)
@@ -31,9 +31,3 @@ module Myhub
 
   end
 end
-
-# api = Myhub::Github.new
-
-# api.get_issues("TIY-ATL-ROR-2015-Sep","assignments", { assignee: "violetaria", state: "all" })
-
-# binding.pry
