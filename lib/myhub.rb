@@ -16,13 +16,13 @@ module Myhub
       erb :index, locals: { issues: stuff }
     end
 
-    put "/issue/:id" do
+    post "/issue/reopen/:id" do
       api = Github.new
       api.reopen_issue(params["id"].to_i)
       "Cool cool cool"
     end
 
-    delete "/issue/:id" do
+    post "/issue/close/:id" do
       api = Github.new
       api.close_issue(params["id"].to_i)
       "Cool cool cool"
